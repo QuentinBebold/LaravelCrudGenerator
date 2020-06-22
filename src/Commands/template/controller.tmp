@@ -1,0 +1,79 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\{CreateDummyRequest};
+use App\Http\Requests\{UpdateDummyRequest};
+use App\Http\Resources\{Dummy} as {DummyResource};
+use App\Http\Resources\{Dummies} as {DummiesResource};
+use App\{Dummy};
+use Illuminate\Http\Request;
+
+class {DummyController} extends Controller
+{
+    public function index(){
+		return new {DummiesResource}({Dummy}::all());
+	}
+
+	public function get(Request $request, $id){
+		if(!${DummyVar} = {Dummy}::find($id)){
+			return response()->json([
+				'message' => '{Dummy} not found'
+			], 404);
+		}
+
+		$data = new {DummyResource}(${DummyVar});
+		return response()->json([
+			'data' => $data,
+			'token' => $request->token,
+		], 200);
+	}
+
+
+	public function create({CreateDummyRequest} $request){
+		${DummyVar} = new {Dummy}();
+
+		{DummyCreate}
+
+		${DummyVar}->save();
+
+		$data = new {DummyResource}(${DummyVar});
+		return response()->json([
+			'data' => $data,
+			'token' => $request->token,
+		], 200);
+	}
+
+	public function update({UpdateDummyRequest} $request){
+
+		if(!${DummyVar} = {Dummy}::find($request->id)){
+			return response()->json([
+				'message' => '{Dummy} not found'
+			], 404);
+		}
+
+		{DummyUpdate}
+
+		${DummyVar}->save();
+
+		$data = new {DummyResource}(${DummyVar});
+		return response()->json([
+			'data' => $data,
+			'token' => $request->token,
+		], 200);
+	}
+
+	public function delete(Request $request, $id){
+		if(!${DummyVar} = {Dummy}::find($id)){
+			return response()->json([
+				'message' => '{Dummy} not found'
+			], 404);
+		}
+
+		${DummyVar}->delete();
+
+		return response()->json([
+			'token' => $request->token,
+		], 200);
+	}
+}

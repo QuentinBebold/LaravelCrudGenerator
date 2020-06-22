@@ -1,0 +1,28 @@
+{
+    "name": "bebold/crud-generator",
+    "description": "crud:generate -> generate all basic files for a crud in laravel based on a json descriptiv file",
+    "type": "laravel-command",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Quentin Meyer",
+            "email": "quentin@bebold.ch"
+        }
+    ],
+	"require": {
+        "laravelcollective/html": "^6.1"
+	},
+	"extra": {
+        "laravel": {
+            "providers": [
+                "bebold\\CrudGenerator\\CrudGeneratorServiceProvider"
+            ]
+        }
+    },
+	"autoload": {
+		"psr-4": {
+			"App\\": "app/",
+			"Bebold\\CrudGenerator\\": "src/"
+		}
+	}
+}

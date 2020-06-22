@@ -1,0 +1,12 @@
+/*
+|--------------------------------------------------------------------------
+| {Dummy}
+|--------------------------------------------------------------------------
+*/
+Route::prefix('/{DummyVar}')->group(function() {
+	Route::get('/', '{DummyController}@index')->name('api.{DummyVar}.index');
+	Route::get('/{id}', '{DummyController}@get')->name('api.{DummyVar}.get');
+	Route::post('/', '{DummyController}@create')->name('api.{DummyVar}.create');
+	Route::patch('/', '{DummyController}@update')->name('api.{DummyVar}.udpate');
+	Route::delete('/{id}', '{DummyController}@delete')->name('api.{DummyVar}.delete');
+});
