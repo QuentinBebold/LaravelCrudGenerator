@@ -1,7 +1,7 @@
 {
     "name": "bebold/crud-generator",
     "description": "crud:generate -> generate all basic files for a crud in laravel based on a json descriptiv file",
-    "type": "laravel-command",
+	"keywords": ["laravel", "crud", "json"],
     "license": "MIT",
     "authors": [
         {
@@ -11,24 +11,20 @@
         }
     ],
 	"require": {
-		"php": "^5.5.9|^7.0",
-		"illuminate/support": "^5.1|^6"
+		"laravel/framework": "^5.8.*"
 	},
+	"autoload": {
+		"psr-4": {
+			"bebold\\CrudGenerator\\": "src/"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
 	"extra": {
         "laravel": {
             "providers": [
                 "bebold\\CrudGenerator\\CrudGeneratorServiceProvider"
             ]
         }
-    },
-	"autoload": {
-		"psr-4": {
-			"bebold\\CrudGenerator\\": "src/"
-		}
-	},
-	"config": {
-        "sort-packages": true
-    },
-    "prefer-stable": true,
-    "minimum-stability": "dev"
+    }
 }
