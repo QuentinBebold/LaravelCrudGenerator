@@ -1,0 +1,31 @@
+{
+	"Test" : {
+		"properties" : {
+			"id" : {
+				"type" : "increments"
+			},
+			"test2" : {
+				"type" : "unsignedInteger",
+				"default" : 45,
+				"validator": {
+					"rules" : "required",
+					"messages" : {
+						"required" : "test"
+					}
+				}
+			},
+			"test3" : {
+				"type" : "string",
+				"typeParams" : [
+					45
+				]
+			},
+			"test4" : {
+				"type" : "text",
+				"nullable" : true
+			}
+		},
+		"timestamps" : true,
+		"softDeletes" : true
+	}
+}
