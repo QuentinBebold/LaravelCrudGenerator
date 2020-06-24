@@ -216,8 +216,8 @@ class CrudGenerator extends Command
 		$tableName = $lowerPlural;
 		$resourceName = $upperName . 'Resource';
 		$resourcesName = $upperPlural . 'Resource';
-		$createRequest = $upperName . 'CreateRequest';
-		$updateRequest = $upperName . 'UpdateRequest';
+		$createRequest = 'Create' . $upperName . 'Request';
+		$updateRequest = 'Update' . $upperName . 'Request';
 
 		$names = array(
 			'Dummy' => $modelName,
@@ -348,8 +348,6 @@ class CrudGenerator extends Command
 						break;
 					}
 				}
-
-				$createTable = substr($createTable, 0, -1);
 			}
 			
 			$createTable .=  ')';
