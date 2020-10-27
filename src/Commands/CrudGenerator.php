@@ -199,10 +199,11 @@ class CrudGenerator extends Command
 
 	function getClassNames($name, $classDefinition){
 
-		$plural = property_exists($classDefinition, 'plural') ? $classDefinition->plural : $name . 's';
+		$name = Str::camel($name);
+		$plural = Str::camel(property_exists($classDefinition, 'plural') ? $classDefinition->plural : $name . 's');
 
 		$upperName = $name;
-		$upperName[0] = strtoupper($upperName[0]);
+		$upperName = strtoupper($upperName[0]);
 		$lowerName = $name;
 		$lowerName[0] = strtolower($lowerName[0]);
 
@@ -213,7 +214,7 @@ class CrudGenerator extends Command
 		
 		$controllerName = $upperName . 'Controller';
 		$modelName = $upperName;
-		$tableName = $lowerPlural;
+		$tableName = Str::snake($lowerPlural);
 		$resourceName = $upperName . 'Resource';
 		$resourcesName = $upperPlural . 'Resource';
 		$createRequest = 'Create' . $upperName . 'Request';
