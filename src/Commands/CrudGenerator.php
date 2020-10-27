@@ -334,7 +334,16 @@ class CrudGenerator extends Command
 
 		$createTable = '';
 		foreach ($definition->properties as $propertyName => $propertyDefinition) {
-			$createTable .=  '$table->' . $propertyDefinition->type . '(\'' . Str::snake($propertyName) . '\'';
+			switch ($propertyDefinition->type) {
+				case 'id':
+					$createTable .=  '$table->' . $propertyDefinition->type . '(';
+					break;
+				
+				default:
+					$createTable .=  '$table->' . $propertyDefinition->type . '(\'' . Str::snake($propertyName) . '\'';
+					break;
+			}
+			
 
 			if(property_exists($propertyDefinition, 'typeParams')){
 				foreach ($propertyDefinition->typeParams as $value) {
