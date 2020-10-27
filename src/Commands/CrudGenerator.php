@@ -203,7 +203,7 @@ class CrudGenerator extends Command
 		$plural = Str::camel(property_exists($classDefinition, 'plural') ? $classDefinition->plural : $name . 's');
 
 		$upperName = $name;
-		$upperName = strtoupper($upperName[0]);
+		$upperName[0] = strtoupper($upperName[0]);
 		$lowerName = $name;
 		$lowerName[0] = strtolower($lowerName[0]);
 
