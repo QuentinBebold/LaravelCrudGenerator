@@ -63,11 +63,16 @@ class CrudGenerator extends Command
 			$this->index++;
 
 			$names = $this->getClassNames($className, $classDefinition);
-			$this->createController($names, $classDefinition);
-			$this->createModel($names, $classDefinition);
-			$this->createResource($names, $classDefinition);
+			
 			$this->createMigration($names, $classDefinition);
-			$this->createRequests($names, $classDefinition);
+
+			if(!property_exists($classDefinition, 'migrationOnly') || !$classDefinition->migrationOnly){
+				$this->createController($names, $classDefinition);
+				$this->createModel($names, $classDefinition);
+				$this->createResource($names, $classDefinition);
+				$this->createRequests($names, $classDefinition);
+			}
+			
 		}
 	}
 
@@ -111,6 +116,11 @@ class CrudGenerator extends Command
 
 			if(property_exists($classDefinition, 'softDeletes') && gettype($classDefinition->softDeletes) !== 'boolean'){
 				print_r('Class ' . $className . ' : "softDeletes" option must be a boolean');
+				return;
+			}
+
+			if(property_exists($classDefinition, 'migrationOnly') && gettype($classDefinition->migrationOnly) !== 'boolean'){
+				print_r('Class ' . $className . ' : "migrationOnly" option must be a boolean');
 				return;
 			}
 
