@@ -6,7 +6,7 @@ use App\Http\Requests\{CreateDummyRequest};
 use App\Http\Requests\{UpdateDummyRequest};
 use App\Http\Resources\{Dummy} as {DummyResource};
 use App\Http\Resources\{Dummies} as {DummiesResource};
-use App\{Dummy};
+use App\Models\{Dummy};
 use Illuminate\Http\Request;
 
 class {DummyController} extends Controller
